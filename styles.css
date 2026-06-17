@@ -430,6 +430,7 @@ figcaption {
 .playlist article {
   display: grid;
   align-content: end;
+  gap: 4px;
   min-height: 210px;
   padding: 16px;
   color: var(--paper);
@@ -476,6 +477,30 @@ figcaption {
   font-size: 0.82rem;
   font-style: normal;
   opacity: 0.78;
+}
+
+.track-button {
+  width: 100%;
+  min-height: 38px;
+  margin-top: 16px;
+  border: 1px solid rgba(255, 248, 232, 0.74);
+  border-radius: 999px;
+  color: var(--paper);
+  background: rgba(255, 248, 232, 0.16);
+  font-size: 0.86rem;
+  font-weight: 900;
+}
+
+.track-button:hover,
+.track-button.is-playing {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.track-button.is-missing {
+  color: rgba(255, 248, 232, 0.78);
+  border-color: rgba(255, 248, 232, 0.34);
+  background: rgba(36, 23, 23, 0.22);
 }
 
 .final-letter {

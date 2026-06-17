@@ -27,10 +27,11 @@
 
     <audio
       id="bgMusic"
-      data-src="assets/audio/cant-help-falling-in-love.mp3"
+      data-src="assets/audio/tracks/cant-help-falling-in-love.mp3"
       loop
       preload="none"
     ></audio>
+    <audio id="trackPlayer" preload="metadata"></audio>
 
     <header class="memory-bar" aria-label="Navegacao das memorias">
       <a class="memory-bar__brand" href="#momento-1">Feliz dia dos namorados</a>
@@ -241,30 +242,65 @@
           <p class="eyebrow">Momento 07</p>
           <h2>Algumas músicas que falam um pouco sobre a gente</h2>
           <div class="playlist">
-            <article>
+            <article data-track-card>
               <span>Meu bem, você me dá água na boca</span>
               <strong>Mania De Você</strong>
               <em>Rita Lee, Roberto De Carvalho</em>
+              <button
+                class="track-button"
+                type="button"
+                data-track="assets/audio/tracks/mania-de-voce.mp3"
+              >
+                Tocar
+              </button>
             </article>
-            <article>
+            <article data-track-card>
               <span>Wise men say</span>
               <strong>Can't Help Falling</strong>
               <em>Elvis Presley</em>
+              <button
+                class="track-button"
+                type="button"
+                data-track="assets/audio/tracks/cant-help-falling-in-love.mp3"
+              >
+                Tocar
+              </button>
             </article>
-            <article>
+            <article data-track-card>
               <span>A fim de te acompanhar</span>
               <strong>Último Romance</strong>
               <em>Los Hermanos</em>
+              <button
+                class="track-button"
+                type="button"
+                data-track="assets/audio/tracks/ultimo-romance.mp3"
+              >
+                Tocar
+              </button>
             </article>
-            <article>
+            <article data-track-card>
               <span>E eu nunca te beijei, mas eu sempre sonhei</span>
               <strong>Anjos</strong>
               <em>Venera Vai Venus</em>
+              <button
+                class="track-button"
+                type="button"
+                data-track="assets/audio/tracks/anjos.mp3"
+              >
+                Tocar
+              </button>
             </article>
-            <article>
+            <article data-track-card>
               <span>E a luz dos olhos teus resolvem se encontrar</span>
               <strong>Pela Luz dos Olhos Teus</strong>
               <em>Miúcha, Tom Jobim</em>
+              <button
+                class="track-button"
+                type="button"
+                data-track="assets/audio/tracks/pela-luz-dos-olhos-teus.mp3"
+              >
+                Tocar
+              </button>
             </article>
           </div>
         </div>

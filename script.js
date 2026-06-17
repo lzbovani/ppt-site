@@ -3,12 +3,15 @@ const entry = document.querySelector("#entry");
 const startButton = document.querySelector("#startButton");
 const audio = document.querySelector("#bgMusic");
 const audioButton = document.querySelector("#audioButton");
+const trackPlayer = document.querySelector("#trackPlayer");
+const trackButtons = [...document.querySelectorAll(".track-button")];
 const dots = [...document.querySelectorAll(".memory-dots a")];
 const scenes = [...document.querySelectorAll(".memory-scene")];
 const revealItems = [...document.querySelectorAll(".reveal")];
 const lightbox = document.querySelector("#lightbox");
 const lightboxImage = lightbox.querySelector("img");
 const lightboxClose = document.querySelector("#lightboxClose");
+let currentTrackButton = null;
 
 body.classList.add("is-locked");
 
@@ -63,6 +66,67 @@ audioButton.addEventListener("click", async () => {
 
 audio.addEventListener("play", setAudioButtonState);
 audio.addEventListener("pause", setAudioButtonState);
+
+const resetTrackButtons = () => {
+  trackButtons.forEach((button) => {
+    button.classList.remove("is-playing");
+    if (!button.classList.contains("is-missing")) {
+      button.textContent = "Tocar";
+    }
+  });
+};
+
+const markTrackMissing = (button) => {
+  button.classList.add("is-missing");
+  button.classList.remove("is-playing");
+  button.textContent = "Adicionar áudio";
+};
+
+trackButtons.forEach((button) => {
+  button.addEventListener("click", async () => {
+    const track = button.dataset.track;
+    const isSameTrack = trackPlayer.src.endsWith(track);
+
+    if (isSameTrack && !trackPlayer.paused) {
+      trackPlayer.pause();
+      button.classList.remove("is-playing");
+      button.textContent = "Tocar";
+      return;
+    }
+
+    resetTrackButtons();
+    currentTrackButton = button;
+
+    trackPlayer.src = track;
+    trackPlayer.volume = 0.72;
+    audio.pause();
+
+    try {
+      await trackPlayer.play();
+      button.classList.add("is-playing");
+      button.classList.remove("is-missing");
+      button.textContent = "Pausar";
+    } catch (error) {
+      markTrackMissing(button);
+    }
+  });
+});
+
+trackPlayer.addEventListener("ended", resetTrackButtons);
+trackPlayer.addEventListener("error", () => {
+  if (currentTrackButton) {
+    markTrackMissing(currentTrackButton);
+  }
+});
+trackPlayer.addEventListener("pause", () => {
+  if (trackPlayer.ended) return;
+  trackButtons.forEach((button) => {
+    if (trackPlayer.src.endsWith(button.dataset.track)) {
+      button.classList.remove("is-playing");
+      button.textContent = "Tocar";
+    }
+  });
+});
 
 const revealObserver = new IntersectionObserver(
   (entries) => {

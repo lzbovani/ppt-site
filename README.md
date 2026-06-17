@@ -16,12 +16,24 @@ Depois abra `http://localhost:5173`.
 
 Para hospedar pelo GitHub Pages, use a branch `main` e a pasta `/ (root)` como fonte de publicacao.
 
-## Musica
+## Musicas
 
-Por direitos autorais, o audio nao foi baixado. Para ativar a musica de fundo, coloque o arquivo local em:
+Por direitos autorais, os audios nao foram baixados nem incluidos automaticamente.
+
+Coloque os arquivos locais autorizados em:
 
 ```text
-assets/audio/cant-help-falling-in-love.mp3
+assets/audio/tracks/
 ```
 
-O site toca esse arquivo em loop, com volume baixo, depois do clique em `Comecar`.
+O site espera estes nomes:
+
+```text
+mania-de-voce.mp3
+cant-help-falling-in-love.mp3
+ultimo-romance.mp3
+anjos.mp3
+pela-luz-dos-olhos-teus.mp3
+```
+
+O arquivo `cant-help-falling-in-love.mp3` tambem toca em loop, com volume baixo, depois do clique em `Comecar`.
